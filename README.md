@@ -1,1 +1,100 @@
-# NNM
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hacked by NNM</title>
+  <style>
+    body {
+      background-color: #001a00;
+      color: #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    #terminal {
+      white-space: pre-wrap;
+      line-height: 1.4;
+      font-size: 18px;
+      animation: blinkCursor 1s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0% { border-right: 2px solid #00ff00; }
+      50% { border-right: 2px solid transparent; }
+      100% { border-right: 2px solid #00ff00; }
+    }
+
+    .glow {
+      text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00;
+    }
+
+    #hint {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00ff00;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal" class="glow"></div>
+  <div id="hint">(N Virus)</div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+
+    const message = `
+*** SYSTEM BREACH DETECTED ***
+ACCESSING FILES...
+OVERRIDING SECURITY...
+
+> HACKED BY NECRONIMUS
+> Seluruh sistem Anda telah kami kuasai.
+> Jangan coba-coba mematikan perangkat Anda.
+> Kami memantau Anda saat ini...
+
+[NECRO VIRUS ACTIVATED]
+`;
+
+    const followUp = `
+> Mengunggah data pribadi ke dark web!...
+> Mengaktifkan kamera depan!...
+> Lokasi Anda: TERDETEKSI!.
+> Selamat datang di neraka digital!.
+
+_Anda tidak bisa lari..._
+`;
+
+    let i = 0;
+    let typingFinished = false;
+
+    function typeMessage() {
+      if (i < message.length) {
+        terminal.textContent += message[i];
+        i++;
+        setTimeout(typeMessage, 40);
+      } else {
+        typingFinished = true;
+      }
+    }
+
+    function typeFollowUp(j = 0) {
+      if (j < followUp.length) {
+        terminal.textContent += followUp[j];
+        setTimeout(() => typeFollowUp(j + 1), 40);
+      }
+    }
+
+    document.addEventListener("click", function () {
+      if (typingFinished) {
+        typingFinished = false;
+        terminal.textContent += "\n\n";
+        typeFollowUp();
+        document.getElementById("hint").style.display = "none";
+      }
+    });
+
+    typeMessage();
+  </script>
+</body>
+</html>
